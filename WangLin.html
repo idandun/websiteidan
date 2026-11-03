@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Path of Wang Lin</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #E8E4E0;
+            background: #080808;
+        }
+        header {
+            background: #0B0B0D;
+            color: #E8E4E0;
+            border-bottom: 1px solid #351016;
+        }
+
+        .header-top {
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        .header-top h1 {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        nav {
+            background: #100D12;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            padding: 15px;
+        }
+
+        .navbar a {
+            color: #C8C8D0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #9E1B32;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #C8C8D0;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .hero {
+            min-height: 360px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5, 5, 7, 0.96),
+                    rgba(35, 5, 13, 0.82)
+                ),
+                url("wanglin.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-image {
+             position: absolute;
+             right: 5%;
+             bottom: 0;
+             height: 95%;
+             max-width: 45%;
+             object-fit: contain;
+             z-index: 1;
+        }
+        .hero-content {
+            width: 90%;
+            max-width: 3000px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+            padding: 70px 0;
+        }
+        .hero-content h2 {
+            font-size: 38px;
+            color: #E8E4E0;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .hero-content h2 span {
+            color: #9E1B32;
+        }
+        .hero-content p {
+            max-width: 500px;
+            color: #C8C0C5;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .read-more {
+            display: inline-block;
+            padding: 13px 35px;
+            border: 1px solid #8B1E30;
+            color:#E8E4E0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .read-more:hover {
+            background: #5C0A12;
+            color:white;
+        }
+        .about {
+            width:  90%;
+            max-width: 1200px;
+            margin: 25px auto;
+        }
+        .about h2{
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #D5D0D5
+        }
+        .about-description {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #B5AFB5;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+        }
+        .feature-card {
+            background: #151116;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #302027;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #8B1E30;
+            box-shadow: 0 5px 15px rgba(100, 10, 25, 0.2)
+        }
+        .feature-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #C8A7AC;
+        }
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #AAA5AE;
+        }
+        footer {
+            background: #0B0B0D;
+            color: #A7A1AA;
+            padding: 15px;
+            font-size: 13px;
+            margin-top: 25px;
+            border-top: 1px solid #351016;
+        }
+        @media (max-width: 768px) {
+            .header-top {
+                padding: 15px;
+            }
+            .header-top h1 {
+                font-size: 22px;
+            }
+            .navbar {
+                gap: 15px;
+                padding: 12px;
+            }
+            .navbar a {
+                font-size: 12px;
+            }
+            .hero {
+                min-height: 300px;
+            }
+            .hero-content h2 {
+                font-size: 28px;
+            }
+            .hero-content p {
+                max-width: 55%;
+                font-size: 12px;
+            }
+            hero-image {
+                right: 0;
+                max-width: 45%;
+                height: 85%;
+            }
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width= 480px) {
+            .header-top {
+                padding: 15px 10px;
+            }
+            .header-top h1 {
+                font-size: 20px;
+            }
+            nav {
+                position: relative;
+            }
+            .navbar {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+            .navbar.active {
+                display: flex;
+            }
+            .navbar a {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 14px;
+                border-top: 1px solid #302027;
+            }
+            .menu-toggle {
+                display: block;
+                padding: 8px 15px;
+            }
+            .hero {
+                min-height: 250px;
+
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(5, 5, 7, 0.94),
+                        rgba(35, 5, 13, 0.72)
+                        ),
+                        url("wanglin.jpg");
+                    background-size: cover;
+                    background-position: center;              
+            }
+            .hero-content {
+                width: 90%;
+                padding: 30px 0;
+            }
+            .hero-content p {
+                max-width: 65%;
+                font-size: 10px;
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+            .read-more {
+                padding: 9px 20px;
+                font-size: 11px;
+            }
+            .hero-image {
+                right: 5px;
+                max-width: 45%;
+                height: 75%;
+            }
+            .about {
+                width: 90%;
+                margin: 20px auto;
+            }
+            .about h2 {
+                font-size: 18px;
+            }
+            .about-description {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+            .features {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .feature-card {
+                padding: 15px;
+            }
+            .feature-card h3 {
+                font-size: 14px;
+            }
+            .feature-card p {
+                font-size: 12px;
+            }
+            footer {
+                font-size: 10px;
+                padding: 12px;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <h1>The Path of Wang Ling</h1>
+        </div>
+        <nav>
+
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
+
+            <div class="navbar" id="navbar">
+
+                <a href="#beranda">Beranda</a>
+                <a href="#profil">Profil</a>
+                <a href="#jurusan">Cultivation</a>
+                <a href="#kegiatan">Journey</a>
+                <a href="#kontak">Kontak</a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <section class="hero" id="beranda">
+
+        <div class="hero-content">
+
+            <h2>
+                THE PATH OF <span>WANG LIN</span>
+            </h2>
+
+            <p>
+                A mortal who walks against the heavens.
+                Through endless trials, loss, and sacrifice,
+                he carves his own path toward immortality.
+                This is the journey of a soul that refuses
+                to surrender to fate.
+            </p>
+
+            <a href="#profil" class="read-more">
+                READ MORE
+            </a>
+
+        </div>
+
+        <img
+            class="hero-image"
+            src="wanglin.png"
+            alt="Wang Lin"
+        >
+
+    </section>
+    <section class="about" id="profil">
+
+        <h2>About Wang Lin</h2>
+
+        <p class="about-description">
+            Wang Lin was once an ordinary young man
+            who entered the cultivation world with
+            nothing but determination.
+
+            Through countless trials and sacrifices,
+            he walks a path beyond fate, seeking
+            strength, truth, and immortality.
+        </p>
+
+        <!-- FEATURE CARDS -->
+
+        <div class="featur">
+
+            <div class="feature-card">
+
+                <h3>His Origin</h3>
+
+                <p>
+                    An ordinary mortal who begins
+                    his journey into the world
+                    of cultivation.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>His Cultivation</h3>
+
+                <p>
+                    Through hardship and determination,
+                    Wang Lin continues to overcome
+                    the limits of his destiny.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>His Journey</h3>
+
+                <p>
+                    A journey filled with loss,
+                    understanding, and the pursuit
+                    of the immortal path.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer id="kontak">
+
+        <p>
+            © 2026 The Path of Wang Lin |
+            Zidan Aryasatya Munir XITKJ2
+        </p>
+
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navbar = document.getElementById("navbar");
+
+        menuToggle.addEventListener("click", function () {
+
+            navbar.classList.toggle("active");
+
+            if (navbar.classList.contains("active")) {
+
+                menuToggle.innerHTML = "✕";
+
+            } else {
+
+                menuToggle.innerHTML = "☰";
+
+            }
+
+        });
+        const navLinks = document.querySelectorAll(".navbar a");
+
+        navLinks.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navbar.classList.remove("active");
+
+                menuToggle.innerHTML = "☰";
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
